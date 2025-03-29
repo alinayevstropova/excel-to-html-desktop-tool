@@ -1,13 +1,77 @@
 body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: linear-gradient(149deg, #c1effe, #c3b0ff, #f6d0cd, #dcdace);
+
+  width: 100%;
+  height: 100%;
+}
+.right {
+  background: #f9f9f9;
+  margin: 15px;
+  border-radius: 15px;
+  padding: 15px;
+}
+.settings-section {
+  width: 100%;
+}
+.css-1wplx8d-MuiPaper-root {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.settings-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.settings-section h2{
+  width: 20%;
+} 
+.settings-section_fields {
+  width: 80%;
+  display: grid
+; gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  justify-content: space-between;
+}
+.settings-section_fields label{
+  display: flex
+  ;
+      flex-direction: column;
+      align-items: flex-start;
+}
+.settings-section_fields label {
+  display: flex;
+  flex-direction: column; /* Размещаем текст label над input */
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+ 
+}
+
+.settings-section_fields input {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px; /* Скругление углов */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+  transition: transform 0.2s ease-in-out;
+}
+
+.settings-section_fields input:focus {
+  transform: translateY(-3px); /* Эффект при наведении */
 }

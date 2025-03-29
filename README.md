@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Excel to HTML Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Это приложение позволяет преобразовывать данные из Excel-файлов в HTML-формат и вставлять их в ZIP-архивы. Оно разработано с использованием React и Electron, что позволяет использовать его как настольное приложение. Приложение упрощает процесс создания HTML-контента на основе структурированных данных, хранящихся в таблицах Excel.
 
-In the project directory, you can run:
+## Основные функции
 
-### `npm start`
+* **Загрузка файлов:** Поддерживается загрузка Excel (.xls, .xlsx) и ZIP-файлов.
+* **Преобразование Excel в HTML:**
+    * Разбор данных из Excel-файлов.
+    * Преобразование строк Excel в HTML-элементы на основе указанных типов данных.
+    * Настройка HTML-тегов и классов для заголовков и текста.
+* **Настройка ссылок:** Возможность автоматического добавления ссылок в текст на основе заданных ключевых слов.
+* **Выбор формы:** Вставка предопределенных HTML-форм в сгенерированный HTML.
+* **Предварительный просмотр:** Отображение сгенерированного HTML перед сохранением.
+* **Сохранение в ZIP:** Сохранение сгенерированного HTML в ZIP-архив.
+* **Вставка текста в ZIP:** Вставка сгенерированного HTML в существующий ZIP-архив.
+* **Кроссплатформенность:** Работает как настольное приложение благодаря Electron.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Использование
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1.  **Загрузка файлов:**
+    * Выберите Excel-файл, содержащий данные для преобразования.
+    * Выберите ZIP-файл, в который нужно вставить сгенерированный HTML (если необходимо).
+2.  **Настройка параметров:**
+    * Укажите HTML-теги и классы для заголовков и обычного текста.
+    * Настройте параметры для автоматического добавления ссылок (ключевые слова и URL).
+    * Выберите нужную HTML-форму для вставки.
+3.  **Предварительный просмотр:**
+    * Просмотрите сгенерированный HTML.
+4.  **Сохранение:**
+    * Сохраните сгенерированный HTML в новый ZIP-файл или вставьте его в существующий.
 
-### `npm test`
+## Формат Excel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Приложение ожидает, что Excel-файл будет иметь следующую структуру:
 
-### `npm run build`
+* **Первый столбец:** Определяет тип данных для каждой строки.
+    * `'h'`: Заголовок.
+    * `'img'`: Изображение.
+    * `'form'`: Форма.
+    * Пустое значение или любое другое: Обычный текст (`<p>`).
+* **Второй столбец:** Содержимое строки (текст, путь к изображению и т. д.).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Технологии
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* `React` - библиотека JavaScript для создания пользовательских интерфейсов.
+* `Material UI` - библиотека компонент React.
+* `xlsx` - библиотека JavaScript для работы с файлами Excel.
+* `Electron` - фреймворк для создания кроссплатформенных настольных приложений с использованием веб-технологий.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Установка
 
-### `npm run eject`
+1.  Установите Node.js и npm.
+2.  Клонируйте репозиторий.
+3.  Перейдите в каталог проекта.
+4.  `npm install`
+5.  `npm start` (для разработки) или `npm run build` и запуск собранного приложения (для продакшена).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Зависимости
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* `react`
+* `xlsx`
+* `@mui/material`
+* `electron` (в качестве dev-зависимости)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Разработка
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Приложение состоит из фронтенда (React) и бэкенда (Node.js/Electron). Фронтенд отвечает за пользовательский интерфейс и взаимодействие с пользователем, а бэкенд - за обработку файлов, взаимодействие с файловой системой и Electron API.
 
-## Learn More
+## Благодарности
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `xlsx` - библиотека для работы с Excel-файлами.
+* `Material UI` - библиотека компонент React.
+* `Electron` - фреймворк для создания настольных приложений.
