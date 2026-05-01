@@ -1,5 +1,5 @@
 {
-  "name": "app2",
+  "name": "excel-to-html-desktop-tool",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -69,7 +69,7 @@
     "wait-on": "^8.0.3"
   },
   "build": {
-    "appId": "com.example.my-app",
+    "appId": "com.alinayevstropova.excel-to-html-desktop-tool",
     "win": {
       "target": "nsis"
     },

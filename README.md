@@ -1,76 +1,57 @@
-# Excel to HTML Converter
+# Excel to HTML Desktop Tool
 
-## Описание
+Electron and React desktop utility for converting structured Excel rows into reusable HTML content and inserting the generated output into ZIP archives.
 
-Это приложение позволяет преобразовывать данные из Excel-файлов в HTML-формат и вставлять их в ZIP-архивы. Оно разработано с использованием React и Electron, что позволяет использовать его как настольное приложение. Приложение упрощает процесс создания HTML-контента на основе структурированных данных, хранящихся в таблицах Excel.
+## Why this project matters
 
-## Основные функции
+This project demonstrates a practical automation workflow: file handling, spreadsheet parsing, previewing generated output, and packaging results for handoff. It combines frontend UI work with desktop app logic and local file processing.
 
-* **Загрузка файлов:** Поддерживается загрузка Excel (.xls, .xlsx) и ZIP-файлов.
-* **Преобразование Excel в HTML:**
-    * Разбор данных из Excel-файлов.
-    * Преобразование строк Excel в HTML-элементы на основе указанных типов данных.
-    * Настройка HTML-тегов и классов для заголовков и текста.
-* **Настройка ссылок:** Возможность автоматического добавления ссылок в текст на основе заданных ключевых слов.
-* **Выбор формы:** Вставка предопределенных HTML-форм в сгенерированный HTML.
-* **Предварительный просмотр:** Отображение сгенерированного HTML перед сохранением.
-* **Сохранение в ZIP:** Сохранение сгенерированного HTML в ZIP-архив.
-* **Вставка текста в ZIP:** Вставка сгенерированного HTML в существующий ZIP-архив.
-* **Кроссплатформенность:** Работает как настольное приложение благодаря Electron.
+## Features
 
-## Использование
+- Upload Excel files and read workbook data
+- Convert rows into configurable HTML elements
+- Configure heading, text, image, form, and link output
+- Preview generated HTML before saving
+- Insert generated content into ZIP archives
+- Desktop packaging with Electron
 
-1.  **Загрузка файлов:**
-    * Выберите Excel-файл, содержащий данные для преобразования.
-    * Выберите ZIP-файл, в который нужно вставить сгенерированный HTML (если необходимо).
-2.  **Настройка параметров:**
-    * Укажите HTML-теги и классы для заголовков и обычного текста.
-    * Настройте параметры для автоматического добавления ссылок (ключевые слова и URL).
-    * Выберите нужную HTML-форму для вставки.
-3.  **Предварительный просмотр:**
-    * Просмотрите сгенерированный HTML.
-4.  **Сохранение:**
-    * Сохраните сгенерированный HTML в новый ZIP-файл или вставьте его в существующий.
+## Tech stack
 
-## Формат Excel
+- React
+- Electron
+- Material UI
+- XLSX
+- JSZip
+- CRACO
 
-Приложение ожидает, что Excel-файл будет иметь следующую структуру:
+## Project structure
 
-* **Первый столбец:** Определяет тип данных для каждой строки.
-    * `'h'`: Заголовок.
-    * `'img'`: Изображение.
-    * `'form'`: Форма.
-    * Пустое значение или любое другое: Обычный текст (`<p>`).
-* **Второй столбец:** Содержимое строки (текст, путь к изображению и т. д.).
+```text
+src/
+  components/   File selectors, settings, preview, output UI
+  services/     Excel parsing, formatting, ZIP, and file helpers
+public/
+  electron.js   Electron main process
+  preload.js    Preload bridge
+```
 
-## Технологии
+## Run locally
 
-* `React` - библиотека JavaScript для создания пользовательских интерфейсов.
-* `Material UI` - библиотека компонент React.
-* `xlsx` - библиотека JavaScript для работы с файлами Excel.
-* `Electron` - фреймворк для создания кроссплатформенных настольных приложений с использованием веб-технологий.
+```bash
+npm install
+npm run electron-react
+```
 
-## Установка
+For a web-only development view:
 
-1.  Установите Node.js и npm.
-2.  Клонируйте репозиторий.
-3.  Перейдите в каталог проекта.
-4.  `npm install`
-5.  `npm start` (для разработки) или `npm run build` и запуск собранного приложения (для продакшена).
+```bash
+npm start
+```
 
-## Зависимости
+## Next improvements
 
-* `react`
-* `xlsx`
-* `@mui/material`
-* `electron` (в качестве dev-зависимости)
-
-## Разработка
-
-Приложение состоит из фронтенда (React) и бэкенда (Node.js/Electron). Фронтенд отвечает за пользовательский интерфейс и взаимодействие с пользователем, а бэкенд - за обработку файлов, взаимодействие с файловой системой и Electron API.
-
-## Благодарности
-
-* `xlsx` - библиотека для работы с Excel-файлами.
-* `Material UI` - библиотека компонент React.
-* `Electron` - фреймворк для создания настольных приложений.
+- Add TypeScript
+- Add tests for Excel parsing and HTML formatting
+- Add sample input files
+- Add screenshots and a short workflow demo
+- Harden file validation and error states
