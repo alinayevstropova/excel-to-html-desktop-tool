@@ -2,6 +2,10 @@
 
 Electron and React desktop utility for converting structured Excel rows into reusable HTML content and inserting the generated output into ZIP archives.
 
+## Demo
+
+[Open project demo page](https://alinayevstropova.github.io/excel-to-html-desktop-tool/)
+
 ## Why this project matters
 
 This project demonstrates a practical automation workflow: file handling, spreadsheet parsing, previewing generated output, and packaging results for handoff. It combines frontend UI work with desktop app logic and local file processing.

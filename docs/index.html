@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio demo page for an Electron and React desktop tool that converts Excel content into HTML."
+    />
+    <title>Excel to HTML Desktop Tool</title>
+    <style>
+      :root {
+        --ink: #171a21;
+        --muted: #616977;
+        --line: #d6dce5;
+        --page: #f4f6f8;
+        --panel: #ffffff;
+        --blue: #285ea8;
+        --green: #197052;
+        --violet: #6750a4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--page);
+        line-height: 1.55;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+
+      a {
+        color: var(--blue);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        gap: 32px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--violet);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.1rem, 6vw, 4.5rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 16px;
+        background: var(--panel);
+        color: var(--ink);
+      }
+
+      .button.primary {
+        border-color: var(--blue);
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .window {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 20px 54px rgba(23, 26, 33, 0.12);
+      }
+
+      .bar {
+        display: flex;
+        gap: 7px;
+        border-bottom: 1px solid var(--line);
+        padding: 12px;
+        background: #eef2f6;
+      }
+
+      .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: #d14f4f;
+      }
+
+      .dot:nth-child(2) {
+        background: #d4a329;
+      }
+
+      .dot:nth-child(3) {
+        background: #35a66a;
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        min-height: 420px;
+      }
+
+      .side {
+        border-right: 1px solid var(--line);
+        padding: 18px;
+        background: #fbfcfd;
+      }
+
+      .side strong {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .side span {
+        display: block;
+        margin-top: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        color: var(--muted);
+        background: #fff;
+        font-size: 0.9rem;
+      }
+
+      .preview {
+        padding: 18px;
+      }
+
+      .table {
+        display: grid;
+        grid-template-columns: 80px 1fr 120px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .cell {
+        border-bottom: 1px solid var(--line);
+        padding: 10px;
+        color: var(--muted);
+        background: #fff;
+        font-size: 0.9rem;
+      }
+
+      .head {
+        color: var(--ink);
+        font-weight: 800;
+        background: #eef4ff;
+      }
+
+      .output {
+        margin-top: 18px;
+        border-left: 4px solid var(--green);
+        border-radius: 8px;
+        padding: 16px;
+        background: #f2faf6;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 44px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .grid,
+        .app {
+          grid-template-columns: 1fr;
+        }
+
+        .side {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Electron / React / XLSX</p>
+          <h1>Desktop automation for turning spreadsheet rows into HTML.</h1>
+          <p class="lead">
+            A portfolio utility showing local file handling, spreadsheet parsing, HTML generation, preview UI,
+            and ZIP packaging inside an Electron app.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/alinayevstropova/excel-to-html-desktop-tool">View code</a>
+            <a class="button" href="https://github.com/alinayevstropova">GitHub profile</a>
+          </div>
+        </div>
+
+        <div class="window" aria-label="Desktop tool preview">
+          <div class="bar">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="app">
+            <aside class="side">
+              <strong>Workflow</strong>
+              <span>1. Upload Excel</span>
+              <span>2. Configure output</span>
+              <span>3. Preview HTML</span>
+              <span>4. Export ZIP</span>
+            </aside>
+            <section class="preview">
+              <div class="table">
+                <div class="cell head">Type</div>
+                <div class="cell head">Content</div>
+                <div class="cell head">Output</div>
+                <div class="cell">h</div>
+                <div class="cell">Product title</div>
+                <div class="cell">&lt;h2&gt;</div>
+                <div class="cell">text</div>
+                <div class="cell">Reusable content block</div>
+                <div class="cell">&lt;p&gt;</div>
+                <div class="cell">img</div>
+                <div class="cell">assets/example.jpg</div>
+                <div class="cell">&lt;img&gt;</div>
+              </div>
+              <div class="output">
+                <strong>Generated HTML preview</strong>
+                <p>Structured spreadsheet content becomes reusable page markup before export.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Project highlights">
+        <article class="card">
+          <h2>Automation</h2>
+          <p>Converts repeated content-production steps into a desktop workflow.</p>
+        </article>
+        <article class="card">
+          <h2>File handling</h2>
+          <p>Works with spreadsheets, generated markup, and ZIP archives.</p>
+        </article>
+        <article class="card">
+          <h2>Frontend UI</h2>
+          <p>Uses React and Material UI to make a technical workflow easier to operate.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
